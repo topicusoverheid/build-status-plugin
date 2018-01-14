@@ -1,0 +1,13 @@
+#* @vtlvariable name="selectedProject" type="com.atlassian.jira.project.Project" *#
+<html>
+    <head>
+        <meta name="decorator" content="atl.admin"/>
+        <meta name="projectId" content="$selectedProject.id"/>
+        <meta name="projectKey" content="$selectedProject.key"/>
+        <meta name="admin.active.section" content="atl.jira.proj.config/projectgroup3"/>
+        <meta name="admin.active.tab" content="build-status-project-settings"/>
+    </head>
+    <body>
+        <h1>Build Status Project Settings</h1>
+    </body>
+</html>

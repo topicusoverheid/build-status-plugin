@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
     <plugin-info>
         <description>${project.description}</description>
@@ -6,19 +8,28 @@
         <param name="plugin-icon">images/pluginIcon.png</param>
         <param name="plugin-logo">images/pluginLogo.png</param>
     </plugin-info>
-
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="build-status-plugin"/>
-
     <!-- add our web resources -->
     <web-resource key="build-status-plugin-resources" name="build-status-plugin Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-
         <resource type="download" name="build-status-plugin.css" location="/css/build-status-plugin.css"/>
         <resource type="download" name="build-status-plugin.js" location="/js/build-status-plugin.js"/>
         <resource type="download" name="images/" location="/images"/>
-
         <context>build-status-plugin</context>
     </web-resource>
-
+    <web-item key="build-status-project-settings" name="build-status-project-settings" section="atl.jira.proj.config/projectgroup3" weight="30">
+        <label key="build-status-project-settings-webitem.name"/>
+        <link linkId="build-status-project-settings-link">/secure/BuildStatusProjectSettings.jspa?projectKey=${project.key}</link>
+    </web-item>
+    <webwork1 key="build-status-webwork-module" name="Build Status Webwork Module" i18n-name-key="build-status-webwork-module.name">
+        <description key="build-status-webwork-module.description">The Build Status Webwork Module Plugin</description>
+        <actions>
+            <action name="nl.topicus.overheid.build.status.webwork.BuildStatusProjectSettingsAction" alias="BuildStatusProjectSettings">
+                <view name="success">
+                    /templates/build-status-webwork-module/buildstatusprojectsettingsaction/builds-status-project-settings-success.vm
+                </view>
+            </action>
+        </actions>
+    </webwork1>
 </atlassian-plugin>
